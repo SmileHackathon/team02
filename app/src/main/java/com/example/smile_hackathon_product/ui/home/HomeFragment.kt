@@ -37,8 +37,15 @@ class HomeFragment : Fragment() {
 
         //ボタン押下時の動作
         squat.setOnClickListener{
-                var intent = Intent(activity, ExerciseActivity::class.java)
-                startActivity(intent)
+            // 1) 画面遷移
+            var intent = Intent(activity, ExerciseActivity::class.java)
+
+            // 2) 運動の名前、運動量を渡す
+            intent.putExtra("EXERCISE_NAME", "スクワット")
+            intent.putExtra("EXERCISE_EXP", 20)
+            intent.putExtra("EXERCISE_TIME", "20回")
+
+            startActivity(intent)
         }
 
         return root

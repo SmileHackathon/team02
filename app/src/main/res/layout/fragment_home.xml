@@ -7,10 +7,10 @@
     tools:context=".ui.home.HomeFragment">
 
     <ImageButton
-        android:id="@+id/suquwatto"
+        android:id="@+id/squat"
         android:layout_width="102dp"
         android:layout_height="102dp"
-        android:src="@drawable/squwatto"
+        android:src="@drawable/squat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

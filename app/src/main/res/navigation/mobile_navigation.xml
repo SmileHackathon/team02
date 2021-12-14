@@ -22,4 +22,10 @@
         android:name="com.example.smile_hackathon_product.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_dailymission"
+        android:name="com.example.smile_hackathon_product.ui.dailymission.DailymissionFragment"
+        android:label="@string/title_dailymission"
+        tools:layout="@layout/fragment_dailymission" />
 </navigation>

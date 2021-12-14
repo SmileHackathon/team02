@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.smile_hackathon_product.MainActivity
 import com.example.smile_hackathon_product.R
 import com.example.smile_hackathon_product.ui.dashboard.DashboardFragment
 import com.example.smile_hackathon_product.ui.exercise.ExerciseActivity
@@ -38,7 +39,8 @@ class HomeFragment : Fragment() {
         // Viewの取得
         var suquwatto: ImageButton = root.findViewById(R.id.suquwatto)
         suquwatto.setOnClickListener{
-            onButtonClick(textView)
+            val intent = Intent(activity, ExerciseActivity::class.java)
+            startActivity(intent)
         }
 
         return root

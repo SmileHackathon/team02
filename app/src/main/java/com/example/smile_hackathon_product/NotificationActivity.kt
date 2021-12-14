@@ -16,12 +16,11 @@ import androidx.core.app.NotificationManagerCompat
 // 通知に関するClass
 // refs:https://codechacha.com/ja/notifications-in-android/
 class NotificationActivity : AppCompatActivity() {
-
+    // TODO: registerNotificationで引数にしている変数はclassの引数にしたほうが良い
     // Channelを作成する関数
     private fun createNotificationChannel(context: Context, importance: Int, showBadge: Boolean,
-                                          name: String, description: String) {
+                                          name: String, description: String, channelId: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channelId = "2021-12-14-fujiidaigo-test"
             val channel = NotificationChannel(channelId, name, importance)
             channel.description = description
             channel.setShowBadge(showBadge)
@@ -52,7 +51,7 @@ class NotificationActivity : AppCompatActivity() {
             11. notificationManager.notify()でnotificationを登録する
          */
         createNotificationChannel(this, NotificationManagerCompat.IMPORTANCE_DEFAULT,
-                false, getString(R.string.app_name), "App notification channel") // 1
+                false, getString(R.string.app_name), "App notification channel", channelId) // 1
 
         // channelId, title, contentは引数で取ることに // 2
 

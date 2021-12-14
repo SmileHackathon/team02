@@ -32,7 +32,11 @@ class NotificationActivity : AppCompatActivity() {
     }
 
     // Notificationを登録する関数
-    // 引数は(通知のid, 通知から移動するActivity, channelを作成するときに使用したID, 通知のtitle, 通知の内容文)
+    // 引数は(NOTIFICATION_ID: 通知のid,
+    //       NewActivity:   通知から移動するActivity,
+    //       channelId: channelを作成するときに使用したID,
+    //       title: 通知のtitle,
+    //       content: 通知の内容文)
     public fun registerNotification(NOTIFICATION_ID: Int, NewActivity: Activity, channelId: String, title: String, content: String): NotificationManagerCompat {
         /*
             1. notification channelを作成していれば作成する

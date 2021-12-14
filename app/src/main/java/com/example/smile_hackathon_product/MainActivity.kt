@@ -3,6 +3,7 @@ package com.example.smile_hackathon_product
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -24,8 +25,13 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         // notification register
-//        var notifi_instance = NotificationActivity()
-//        notifi_instance.registerNotification()
+        var NOTIFICATION_ID = 1001
+        var NewAcitivity = MainActivity()
+        var channelId = "2021-12-14-funera1"
+        var title = "title"
+        var content = "content"
+        var notifi_instance = NotificationActivity()
+        var notifi_register = notifi_instance.registerNotification(NOTIFICATION_ID, NewAcitivity, channelId, title, content)
     }
 }
 

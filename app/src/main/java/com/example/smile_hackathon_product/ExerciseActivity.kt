@@ -25,7 +25,7 @@ class ExerciseActivity : AppCompatActivity(){
 
         // 完了ボタンが押されたときの処理
         finishedExerciseButton.setOnClickListener{
-            var intent = Intent(this, ExerciseResultActivity::class.java)
+            var intent = Intent(this, TestActivity::class.java)
             intent.putExtra("EXERCISE_EXP", exerciseExp)
             startActivity(intent)
             finish()

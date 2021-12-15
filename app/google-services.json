@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1059592979559",
+    "project_id": "smile-hackathon-team02",
+    "storage_bucket": "smile-hackathon-team02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059592979559:android:6aafbcbfe8e7ab622e40c2",
+        "android_client_info": {
+          "package_name": "com.ganbarinokokoro.undou_nannniti_tudukukana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059592979559-na675gvkktlo4l90t7kfbqmgo57iamd9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJDWlbrL7fawoh5Lr8gQ3tqel_xXp2n4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059592979559-na675gvkktlo4l90t7kfbqmgo57iamd9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

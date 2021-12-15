@@ -29,7 +29,9 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        
+        // 運動の配列
+        var exercise_list = arrayOf("squat", "walking", "fukkin", "running", "plank", "udetate", "haikinn")
+        var gatcha_list = arrayOf(1, 1, 1, 0, 0, 0, 0)
 
         // level
         val progressBar : ProgressBar = findViewById(R.id.progressbar)

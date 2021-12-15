@@ -16,6 +16,7 @@ class ExerciseActivity : AppCompatActivity(){
         val exerciseName : TextView = findViewById(R.id.exercise_name)
         val exerciseTime : TextView = findViewById(R.id.exercise_time)
         val finishedExerciseButton : Button = findViewById(R.id.finished_exercise_button)
+        val backButton : Button = findViewById(R.id.back_button)
 
         // Homeで押されたボタンの運動を受け取る
         exerciseName.text = intent.getStringExtra("EXERCISE_NAME")
@@ -27,6 +28,11 @@ class ExerciseActivity : AppCompatActivity(){
             var intent = Intent(this, ExerciseResultActivity::class.java)
             intent.putExtra("EXERCISE_EXP", exerciseExp)
             startActivity(intent)
+            finish()
+        }
+
+        // 戻るボタンが押されたときの処理
+        backButton.setOnClickListener{
             finish()
         }
 

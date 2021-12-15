@@ -1,15 +1,12 @@
 package com.example.smile_hackathon_product.ui.home
 
 import android.content.Intent
-import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.smile_hackathon_product.R
 import com.example.smile_hackathon_product.ExerciseActivity
@@ -37,6 +34,7 @@ class HomeFragment : Fragment() {
         var fukkin: ImageButton = root.findViewById(R.id.fukkin)
         var haikinn: ImageButton = root.findViewById(R.id.haikinn)
         var udetate: ImageButton = root.findViewById(R.id.udetate)
+
 
         //スクワットボタン押下時の動作
         squat.setOnClickListener{

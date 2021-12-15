@@ -32,11 +32,13 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        //jsonに関する処理
         val jsonobj = readJson("Sample.json")
 //        print(jsonobj.get("sample"))
     }
+    //assetsから引数にassets下のjsonのpathを与えてJSONObjectを返す
+    //getAssets().open(path)でファイルが開けなくて困っている
     fun readJson(path: String) : JSONObject{
-//        val assetManager = resources.assets
         var inputStream: InputStream? = null
         try{
             inputStream = getAssets().open(path)
@@ -52,12 +54,8 @@ class MainActivity : AppCompatActivity() {
                 Log.d("AppErr", "File closing failed")
             }
         }
+        // 失敗したら空のjsonを返す
         val js = JSONObject("{}")
         return js
-//        val jsonArray = jsonObject.getJSONArray(())
-//        val bufferedReader = BufferedReader(InputStreamReader(inputStream))
-//        val str: String = bufferedReader.readText()
-//        val jsonObject = JSONObject(str)
-//        return jsonObject
     }
 }

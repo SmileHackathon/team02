@@ -11,6 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.smile_hackathon_product.R
 import com.example.smile_hackathon_product.ui.dailymission.DailymissionViewModel
+import android.widget.LinearLayout.*
+import android.graphics.Color
+import android.view.Gravity
+import android.widget.Button
+import android.widget.LinearLayout
 
 class DailymissionFragment : Fragment() {
     private lateinit var dailymissionViewModel: DailymissionViewModel

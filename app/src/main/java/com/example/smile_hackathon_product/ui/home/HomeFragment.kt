@@ -35,6 +35,7 @@ class HomeFragment : Fragment() {
         var haikinn: ImageButton = root.findViewById(R.id.haikinn)
         var udetate: ImageButton = root.findViewById(R.id.udetate)
 
+
         //スクワットボタン押下時の動作
         squat.setOnClickListener{
             // 1) 画面遷移

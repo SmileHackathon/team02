@@ -18,10 +18,15 @@ class ExerciseActivity : AppCompatActivity(){
         val finishedExerciseButton : Button = findViewById(R.id.finished_exercise_button)
         val backButton : Button = findViewById(R.id.back_button)
 
+        //instance呼び出し
+        val myApp = MyApplication.getInstance()
+
         // Homeで押されたボタンの運動を受け取る
-        exerciseName.text = intent.getStringExtra("EXERCISE_NAME")
-        exerciseTime.text = intent.getStringExtra("EXERCISE_TIME")
-        val exerciseExp = intent.getIntExtra("EXERCISE_EXP", 0)
+        exerciseName.text = myApp.exerciseNameMap[intent.getStringExtra("EXERCISE_NAME")]
+        exerciseTime.text = myApp.exerciseTimeMap[intent.getStringExtra("EXERCISE_NAME")]
+        val exerciseExp = myApp.exerciseExpMap[intent.getStringExtra("EXERCISE_NAME")]
+
+        // 受けとった運動ごとに表示を変える
 
         // 完了ボタンが押されたときの処理
         finishedExerciseButton.setOnClickListener{

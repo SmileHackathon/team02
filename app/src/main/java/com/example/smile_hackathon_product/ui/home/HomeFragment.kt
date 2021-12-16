@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
         //instance呼び出し
         val myApp = MyApplication.getInstance()
 
-        if (myApp.gatcha_list[0] == 1) {
+        if (myApp.exerciseMap["squat"] == 1) {
             squat.setImageResource(R.drawable.squat)
             //スクワットボタン押下時の動作
             squat.setOnClickListener{
@@ -48,16 +48,14 @@ class HomeFragment : Fragment() {
                 var intent = Intent(activity, ExerciseActivity::class.java)
 
                 // 2) 運動の名前、運動量を渡す
-                intent.putExtra("EXERCISE_NAME", "スクワット")
-                intent.putExtra("EXERCISE_EXP", 20)
-                intent.putExtra("EXERCISE_TIME", "20回")
+                intent.putExtra("EXERCISE_NAME", "squat")
 
                 startActivity(intent)
             }
         }
 
 
-        if (myApp.gatcha_list[1] == 1) {
+        if (myApp.exerciseMap["walking"] == 1) {
             walking.setImageResource(R.drawable.walking)
             //ウォーキングボタン押下時の動作
             walking.setOnClickListener {
@@ -65,15 +63,13 @@ class HomeFragment : Fragment() {
                 var intent = Intent(activity, ExerciseActivity::class.java)
 
                 // 2) 運動の名前、運動量を渡す
-                intent.putExtra("EXERCISE_NAME", "ウォーキング")
-                intent.putExtra("EXERCISE_EXP", 20)
-                intent.putExtra("EXERCISE_TIME", "20分")
+                intent.putExtra("EXERCISE_NAME", "walking")
 
                 startActivity(intent)
             }
         }
 
-        if (myApp.gatcha_list[2] == 1) {
+        if (myApp.exerciseMap["running"] == 1) {
             running.setImageResource(R.drawable.running)
             //ランニングボタン押下時の動作
             running.setOnClickListener {
@@ -81,15 +77,13 @@ class HomeFragment : Fragment() {
                 var intent = Intent(activity, ExerciseActivity::class.java)
 
                 // 2) 運動の名前、運動量を渡す
-                intent.putExtra("EXERCISE_NAME", "ランニング")
-                intent.putExtra("EXERCISE_EXP", 20)
-                intent.putExtra("EXERCISE_TIME", "10分")
+                intent.putExtra("EXERCISE_NAME", "running")
 
                 startActivity(intent)
             }
         }
 
-        if (myApp.gatcha_list[3] == 1) {
+        if (myApp.exerciseMap["plank"] == 1) {
             plank.setImageResource(R.drawable.plank)
             //プランクボタン押下時の動作
             plank.setOnClickListener {
@@ -97,15 +91,13 @@ class HomeFragment : Fragment() {
                 var intent = Intent(activity, ExerciseActivity::class.java)
 
                 // 2) 運動の名前、運動量を渡す
-                intent.putExtra("EXERCISE_NAME", "プランク")
-                intent.putExtra("EXERCISE_EXP", 20)
-                intent.putExtra("EXERCISE_TIME", "1分")
+                intent.putExtra("EXERCISE_NAME", "plank")
 
                 startActivity(intent)
             }
         }
 
-        if (myApp.gatcha_list[4] == 1) {
+        if (myApp.exerciseMap["fukkin"] == 1) {
             fukkin.setImageResource(R.drawable.fukkin)
             //腹筋ボタン押下時の動作
             fukkin.setOnClickListener {
@@ -113,15 +105,13 @@ class HomeFragment : Fragment() {
                 var intent = Intent(activity, ExerciseActivity::class.java)
 
                 // 2) 運動の名前、運動量を渡す
-                intent.putExtra("EXERCISE_NAME", "腹筋")
-                intent.putExtra("EXERCISE_EXP", 20)
-                intent.putExtra("EXERCISE_TIME", "20回")
+                intent.putExtra("EXERCISE_NAME", "fukkin")
 
                 startActivity(intent)
             }
         }
 
-        if (myApp.gatcha_list[5] == 1) {
+        if (myApp.exerciseMap["haikinn"] == 1) {
             haikinn.setImageResource(R.drawable.haikinn)
             //背筋ボタン押下時の動作
             haikinn.setOnClickListener {
@@ -129,15 +119,13 @@ class HomeFragment : Fragment() {
                 var intent = Intent(activity, ExerciseActivity::class.java)
 
                 // 2) 運動の名前、運動量を渡す
-                intent.putExtra("EXERCISE_NAME", "背筋")
-                intent.putExtra("EXERCISE_EXP", 20)
-                intent.putExtra("EXERCISE_TIME", "20回")
+                intent.putExtra("EXERCISE_NAME", "haikinn")
 
                 startActivity(intent)
             }
         }
 
-        if (myApp.gatcha_list[6] == 1) {
+        if (myApp.exerciseMap["udetate"] == 1) {
             udetate.setImageResource(R.drawable.udetate)
             //腕立て伏せボタン押下時の動作
             udetate.setOnClickListener {
@@ -145,9 +133,7 @@ class HomeFragment : Fragment() {
                 var intent = Intent(activity, ExerciseActivity::class.java)
 
                 // 2) 運動の名前、運動量を渡す
-                intent.putExtra("EXERCISE_NAME", "腕立て伏せ")
-                intent.putExtra("EXERCISE_EXP", 20)
-                intent.putExtra("EXERCISE_TIME", "10回")
+                intent.putExtra("EXERCISE_NAME", "udetate")
 
                 startActivity(intent)
             }

@@ -2,10 +2,7 @@ package com.example.smile_hackathon_product
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -45,5 +42,12 @@ class MainActivity : AppCompatActivity() {
         progressBar.secondaryProgress = neededExp
 
         tvLevel.text = "Lv.$playerLevel"
+
+        /*var button : Button = findViewById<Button>(R.id.test_button)
+        button.setOnClickListener{
+            val intent = Intent(this, MovieActivity::class.java)
+            startActivity(intent)
+        }*/
+
     }
 }

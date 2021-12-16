@@ -39,25 +39,25 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
-        //TODO:関数かなんかにまとめたい--
+        //
         //日時取得
         val nowDate: LocalDate = LocalDate.now()
         // jsonから記録してた日時取得
-        val jsonObj = recordActivity().readJson("data.json")
-        val recordedDate = jsonObj.getJSONObject("date").getInt("day")
-        if( nowDate.dayOfMonth < recordedDate ) {
-            // デイリーボーナスをゲットする
-            var gatchaPoint = GatchaResultActivity().getDailyBonus()
-
-            // 画面遷移
-            var intent = Intent(this, DailyBonusActivity::class.java)
-            startActivity(intent)
-        }
+//        val jsonObj = recordActivity().readJson("data.json")
+//        val recordedDate = jsonObj.getJSONObject("date").getInt("day")
+//        if( nowDate.dayOfMonth < recordedDate ) {
+//            // デイリーボーナスをゲットする
+////            var gatchaPoint = GatchaResultActivity().getDailyBonus()
+//
+//            // 画面遷移
+//            var intent = Intent(this, DailyBonusActivity::class.java)
+//            startActivity(intent)
+//        }
         // nowDateをdate.jsonに更新する
-        jsonObj.put("year", nowDate.year)
-        jsonObj.put("month", nowDate.month)
-        jsonObj.put("day", nowDate.dayOfMonth)
-        //TODO:ここまで--------------------------------------------------
+//        jsonObj.put("year", nowDate.year)
+//        jsonObj.put("month", nowDate.month)
+//        jsonObj.put("day", nowDate.dayOfMonth)
+
     }
 }
 

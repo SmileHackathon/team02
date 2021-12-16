@@ -12,12 +12,14 @@ class MyApplication : Application(){
     var exerciseMap = mutableMapOf<String, Int>("squat" to 1, "walking" to 1, "running" to 0, "plank" to 0, "fukkin" to 0, "haikinn" to 0, "udetate" to 0)
     var gatchaList = mutableListOf("running", "plank", "fukkin", "haikinn", "udetate")
     var existList = mutableListOf("squat", "walking")
-//    public var gatchaPoint = 0
+    public var gatchaPoint = 0
 
     // level関連
     var playerLevel : Int = 1
     var exp : Int = 0
-    var neededExp : Int = 10
+    var neededExp : Int = playerLevel * (10 + playerLevel*10) / 2
+
+
 
     companion object {
         private var instance : MyApplication? = null

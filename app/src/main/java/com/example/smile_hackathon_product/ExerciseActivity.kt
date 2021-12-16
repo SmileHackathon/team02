@@ -25,6 +25,7 @@ class ExerciseActivity : AppCompatActivity(){
         exerciseName.text = myApp.exerciseNameMap[intent.getStringExtra("EXERCISE_NAME")]
         exerciseTime.text = myApp.exerciseTimeMap[intent.getStringExtra("EXERCISE_NAME")]
         val exerciseExp = myApp.exerciseExpMap[intent.getStringExtra("EXERCISE_NAME")]
+        val getPoint = intent.getIntExtra("POINT", 0)
 
         // 受けとった運動ごとに表示を変える
 
@@ -32,6 +33,7 @@ class ExerciseActivity : AppCompatActivity(){
         finishedExerciseButton.setOnClickListener{
             var intent = Intent(this, ExerciseResultActivity::class.java)
             intent.putExtra("EXERCISE_EXP", exerciseExp)
+            myApp.gatchaPoint += getPoint
             startActivity(intent)
             finish()
         }

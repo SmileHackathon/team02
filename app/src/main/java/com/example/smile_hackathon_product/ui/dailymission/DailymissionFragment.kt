@@ -81,6 +81,7 @@ class DailymissionFragment : Fragment() {
 
             // 運動名を送る
             intent.putExtra("EXERCISE_NAME", dailyMissionList[0])
+            intent.putExtra("POINT", 10)
 
             startActivity(intent)
         }
@@ -115,6 +116,7 @@ class DailymissionFragment : Fragment() {
 
             // 運動名を送る
             intent.putExtra("EXERCISE_NAME", dailyMissionList[1])
+            intent.putExtra("POINT", 10)
 
             startActivity(intent)
         }
@@ -151,6 +153,7 @@ class DailymissionFragment : Fragment() {
 
                 // 運動名を送る
                 intent.putExtra("EXERCISE_NAME", dailyMissionList[2])
+                intent.putExtra("POINT", 10)
 
                 startActivity(intent)
             }

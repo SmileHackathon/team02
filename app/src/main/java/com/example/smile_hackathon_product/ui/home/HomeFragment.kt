@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.smile_hackathon_product.R
 import com.example.smile_hackathon_product.ExerciseActivity
+import com.example.smile_hackathon_product.MyApplication
 
 class HomeFragment : Fragment() {
 
@@ -36,95 +37,120 @@ class HomeFragment : Fragment() {
         var udetate: ImageButton = root.findViewById(R.id.udetate)
 
 
-        //スクワットボタン押下時の動作
-        squat.setOnClickListener{
-            // 1) 画面遷移
-            var intent = Intent(activity, ExerciseActivity::class.java)
+        //instance呼び出し
+        val myApp = MyApplication.getInstance()
 
-            // 2) 運動の名前、運動量を渡す
-            intent.putExtra("EXERCISE_NAME", "スクワット")
-            intent.putExtra("EXERCISE_EXP", 20)
-            intent.putExtra("EXERCISE_TIME", "20回")
+        if (myApp.gatcha_list[0] == 1) {
+            squat.setImageResource(R.drawable.squat)
+            //スクワットボタン押下時の動作
+            squat.setOnClickListener{
+                // 1) 画面遷移
+                var intent = Intent(activity, ExerciseActivity::class.java)
 
-            startActivity(intent)
+                // 2) 運動の名前、運動量を渡す
+                intent.putExtra("EXERCISE_NAME", "スクワット")
+                intent.putExtra("EXERCISE_EXP", 20)
+                intent.putExtra("EXERCISE_TIME", "20回")
+
+                startActivity(intent)
+            }
         }
 
-        //ウォーキングボタン押下時の動作
-        walking.setOnClickListener{
-            // 1) 画面遷移
-            var intent = Intent(activity, ExerciseActivity::class.java)
 
-            // 2) 運動の名前、運動量を渡す
-            intent.putExtra("EXERCISE_NAME", "ウォーキング")
-            intent.putExtra("EXERCISE_EXP", 20)
-            intent.putExtra("EXERCISE_TIME", "20分")
+        if (myApp.gatcha_list[1] == 1) {
+            walking.setImageResource(R.drawable.walking)
+            //ウォーキングボタン押下時の動作
+            walking.setOnClickListener {
+                // 1) 画面遷移
+                var intent = Intent(activity, ExerciseActivity::class.java)
 
-            startActivity(intent)
+                // 2) 運動の名前、運動量を渡す
+                intent.putExtra("EXERCISE_NAME", "ウォーキング")
+                intent.putExtra("EXERCISE_EXP", 20)
+                intent.putExtra("EXERCISE_TIME", "20分")
+
+                startActivity(intent)
+            }
         }
 
-        //ランニングボタン押下時の動作
-        running.setOnClickListener{
-            // 1) 画面遷移
-            var intent = Intent(activity, ExerciseActivity::class.java)
+        if (myApp.gatcha_list[2] == 1) {
+            running.setImageResource(R.drawable.running)
+            //ランニングボタン押下時の動作
+            running.setOnClickListener {
+                // 1) 画面遷移
+                var intent = Intent(activity, ExerciseActivity::class.java)
 
-            // 2) 運動の名前、運動量を渡す
-            intent.putExtra("EXERCISE_NAME", "ランニング")
-            intent.putExtra("EXERCISE_EXP", 20)
-            intent.putExtra("EXERCISE_TIME", "10分")
+                // 2) 運動の名前、運動量を渡す
+                intent.putExtra("EXERCISE_NAME", "ランニング")
+                intent.putExtra("EXERCISE_EXP", 20)
+                intent.putExtra("EXERCISE_TIME", "10分")
 
-            startActivity(intent)
+                startActivity(intent)
+            }
         }
 
-        //プランクボタン押下時の動作
-        plank.setOnClickListener{
-            // 1) 画面遷移
-            var intent = Intent(activity, ExerciseActivity::class.java)
+        if (myApp.gatcha_list[3] == 1) {
+            plank.setImageResource(R.drawable.plank)
+            //プランクボタン押下時の動作
+            plank.setOnClickListener {
+                // 1) 画面遷移
+                var intent = Intent(activity, ExerciseActivity::class.java)
 
-            // 2) 運動の名前、運動量を渡す
-            intent.putExtra("EXERCISE_NAME", "プランク")
-            intent.putExtra("EXERCISE_EXP", 20)
-            intent.putExtra("EXERCISE_TIME", "1分")
+                // 2) 運動の名前、運動量を渡す
+                intent.putExtra("EXERCISE_NAME", "プランク")
+                intent.putExtra("EXERCISE_EXP", 20)
+                intent.putExtra("EXERCISE_TIME", "1分")
 
-            startActivity(intent)
+                startActivity(intent)
+            }
         }
 
-        //腹筋ボタン押下時の動作
-        fukkin.setOnClickListener{
-            // 1) 画面遷移
-            var intent = Intent(activity, ExerciseActivity::class.java)
+        if (myApp.gatcha_list[4] == 1) {
+            fukkin.setImageResource(R.drawable.fukkin)
+            //腹筋ボタン押下時の動作
+            fukkin.setOnClickListener {
+                // 1) 画面遷移
+                var intent = Intent(activity, ExerciseActivity::class.java)
 
-            // 2) 運動の名前、運動量を渡す
-            intent.putExtra("EXERCISE_NAME", "腹筋")
-            intent.putExtra("EXERCISE_EXP", 20)
-            intent.putExtra("EXERCISE_TIME", "20回")
+                // 2) 運動の名前、運動量を渡す
+                intent.putExtra("EXERCISE_NAME", "腹筋")
+                intent.putExtra("EXERCISE_EXP", 20)
+                intent.putExtra("EXERCISE_TIME", "20回")
 
-            startActivity(intent)
+                startActivity(intent)
+            }
         }
 
-        //背筋ボタン押下時の動作
-        haikinn.setOnClickListener{
-            // 1) 画面遷移
-            var intent = Intent(activity, ExerciseActivity::class.java)
+        if (myApp.gatcha_list[5] == 1) {
+            haikinn.setImageResource(R.drawable.haikinn)
+            //背筋ボタン押下時の動作
+            haikinn.setOnClickListener {
+                // 1) 画面遷移
+                var intent = Intent(activity, ExerciseActivity::class.java)
 
-            // 2) 運動の名前、運動量を渡す
-            intent.putExtra("EXERCISE_NAME", "背筋")
-            intent.putExtra("EXERCISE_EXP", 20)
-            intent.putExtra("EXERCISE_TIME", "20回")
+                // 2) 運動の名前、運動量を渡す
+                intent.putExtra("EXERCISE_NAME", "背筋")
+                intent.putExtra("EXERCISE_EXP", 20)
+                intent.putExtra("EXERCISE_TIME", "20回")
 
-            startActivity(intent)
+                startActivity(intent)
+            }
         }
 
-        //腕立て伏せボタン押下時の動作
-        udetate.setOnClickListener{
-            // 1) 画面遷移
-            var intent = Intent(activity, ExerciseActivity::class.java)
+        if (myApp.gatcha_list[6] == 1) {
+            udetate.setImageResource(R.drawable.udetate)
+            //腕立て伏せボタン押下時の動作
+            udetate.setOnClickListener {
+                // 1) 画面遷移
+                var intent = Intent(activity, ExerciseActivity::class.java)
 
-            // 2) 運動の名前、運動量を渡す
-            intent.putExtra("EXERCISE_NAME", "腕立て伏せ")
-            intent.putExtra("EXERCISE_EXP", 20)
-            intent.putExtra("EXERCISE_TIME", "10回")
+                // 2) 運動の名前、運動量を渡す
+                intent.putExtra("EXERCISE_NAME", "腕立て伏せ")
+                intent.putExtra("EXERCISE_EXP", 20)
+                intent.putExtra("EXERCISE_TIME", "10回")
 
-            startActivity(intent)
+                startActivity(intent)
+            }
         }
 
         return root

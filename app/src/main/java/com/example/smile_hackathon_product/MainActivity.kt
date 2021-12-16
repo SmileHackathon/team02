@@ -13,8 +13,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.smile_hackathon_product.ui.dashboard.DashboardFragment
+import com.example.smile_hackathon_product.ui.recordActivity
 import org.json.JSONObject
 import java.io.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,30 +35,21 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        //jsonに関する処理
-        val jsonobj = readJson("Sample.json")
-//        print(jsonobj.get("sample"))
     }
-    //assetsから引数にassets下のjsonのpathを与えてJSONObjectを返す
-    //getAssets().open(path)でファイルが開けなくて困っている
-    fun readJson(path: String) : JSONObject{
-        var inputStream: InputStream? = null
-        try{
-            inputStream = getAssets().open(path)
-            val jsonString = inputStream.bufferedReader().use { it.readText() }
-            val jsonObject = JSONObject(jsonString)
-            return jsonObject
-        } catch (e: IOException) {
-            Log.d("AppErr", "File openning failed")
-        } finally {
-            try {
-                if (inputStream != null) inputStream.close()
-            } catch (e: IOException) {
-                Log.d("AppErr", "File closing failed")
-            }
+
+    override fun onStart() {
+        super.onStart()
+        //日時取得
+        // TODO:このフォーマットじゃだめ. year, month, dayだけでいい。またそれぞれを分割してint型で持つ
+        var dateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+        var date = Date(System.currentTimeMillis())
+        val nowDate = dateFormat.format(date)
+        // jsonから記録してた日時取得
+        val jsonObj = recordActivity().readJson("date.json")
+        val recordedDate = jsonObj.get("day")
+        if( nowDate < recordedDate ) {
+            // デイリーボーナスをゲットする
+            getDailyBonus()
         }
-        // 失敗したら空のjsonを返す
-        val js = JSONObject("{}")
-        return js
     }
 }

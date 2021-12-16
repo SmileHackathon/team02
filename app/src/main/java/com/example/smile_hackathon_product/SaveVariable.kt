@@ -12,6 +12,7 @@ class MyApplication : Application(){
     var exerciseMap = mutableMapOf<String, Int>("squat" to 1, "walking" to 1, "running" to 0, "plank" to 0, "fukkin" to 0, "haikinn" to 0, "udetate" to 0)
     var gatchaList = mutableListOf("running", "plank", "fukkin", "haikinn", "udetate")
     var existList = mutableListOf("squat", "walking")
+//    public var gatchaPoint = 0
 
     // level関連
     var playerLevel : Int = 1

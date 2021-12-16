@@ -64,4 +64,12 @@ class GatchaResultActivity : AppCompatActivity() {
             finish()
         }
     }
+    public fun getDailyBonus(gatchaPoint: Int, plusPoint: Int): Int {
+        //json開く
+        val jsonObj = recordActivity().readJson("data.json")
+        var gatchaPoint = jsonObj.getJSONObject("point").getInt("gatcha")
+        gatchaPoint += plusPoint
+        jsonObj.getJSONObject("point").put("gatcha", gatchaPoint)
+        return gatchaPoint
+    }
 }

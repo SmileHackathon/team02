@@ -1,5 +1,6 @@
 package com.example.smile_hackathon_product
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -24,6 +25,10 @@ class MovieActivity : AppCompatActivity() {
             }
 
             videoView.setOnCompletionListener{
+                var intent = Intent(this, GatchaResultActivity::class.java)
+                var gatchaResult = intent.getStringExtra("GATCHA_RESULT")
+                intent.putExtra("GATCHA_RESULT",gatchaResult)
+                startActivity(intent)
                 finish()
             }
         }, 280)

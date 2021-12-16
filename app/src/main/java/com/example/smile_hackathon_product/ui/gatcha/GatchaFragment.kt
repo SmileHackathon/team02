@@ -9,6 +9,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.smile_hackathon_product.GatchaResultActivity
+import com.example.smile_hackathon_product.MovieActivity
 import com.example.smile_hackathon_product.MyApplication
 import com.example.smile_hackathon_product.R
 
@@ -33,7 +34,7 @@ class GatchaFragment : Fragment() {
 
         // ボタンが押されたときの処理
         gatchaButton.setOnClickListener{
-            var intent = Intent(activity, GatchaResultActivity::class.java)
+            var intent = Intent(activity, MovieActivity::class.java)
             val gatchaResultIndex = myApp.gatchaList.indices.random()
             var gatchaResult = myApp.gatchaList[gatchaResultIndex]
 

@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import android.app.Application
+import android.content.Intent
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -46,27 +47,17 @@ class MainActivity : AppCompatActivity() {
         val recordedDate = jsonObj.getJSONObject("date").getInt("day")
         if( nowDate.dayOfMonth < recordedDate ) {
             // デイリーボーナスをゲットする
-            var x = GatchaResultActivity().getDailyBonus()
+            var gatchaPoint = GatchaResultActivity().getDailyBonus()
+
+            // 画面遷移
+            var intent = Intent(this, DailyBonusActivity::class.java)
+            startActivity(intent)
         }
         // nowDateをdate.jsonに更新する
         jsonObj.put("year", nowDate.year)
         jsonObj.put("month", nowDate.month)
         jsonObj.put("day", nowDate.dayOfMonth)
         //TODO:ここまで--------------------------------------------------
-        // level
-        val progressBar : ProgressBar = findViewById(R.id.progressbar)
-        val tvLevel : TextView = findViewById(R.id.tv_level)
-
-
-
-        var playerLevel : Int = 1
-        var exp : Int = 0
-        var neededExp : Int = 10
-
-        progressBar.progress = exp
-        progressBar.secondaryProgress = neededExp
-
-        tvLevel.text = "Lv.$playerLevel"
     }
 }
 

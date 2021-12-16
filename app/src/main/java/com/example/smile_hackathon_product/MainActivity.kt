@@ -1,15 +1,15 @@
 package com.example.smile_hackathon_product
 
-import android.content.Intent
+import android.app.Application
 import android.os.Bundle
-import android.widget.*
+import android.widget.ProgressBar
+import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.smile_hackathon_product.ui.dashboard.DashboardFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,17 +22,15 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_daily_mission))
+                R.id.navigation_home, R.id.navigation_gatcha, R.id.navigation_daily_mission))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        // 運動の配列
-        var exercise_list = arrayOf("squat", "walking", "fukkin", "running", "plank", "udetate", "haikinn")
-        var gatcha_list = arrayOf(1, 1, 1, 0, 0, 0, 0)
 
         // level
         val progressBar : ProgressBar = findViewById(R.id.progressbar)
         val tvLevel : TextView = findViewById(R.id.tv_level)
+
+
 
         var playerLevel : Int = 1
         var exp : Int = 0
@@ -42,12 +40,6 @@ class MainActivity : AppCompatActivity() {
         progressBar.secondaryProgress = neededExp
 
         tvLevel.text = "Lv.$playerLevel"
-
-        /*var button : Button = findViewById<Button>(R.id.test_button)
-        button.setOnClickListener{
-            val intent = Intent(this, MovieActivity::class.java)
-            startActivity(intent)
-        }*/
-
     }
 }
+

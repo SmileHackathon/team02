@@ -25,8 +25,9 @@ class MovieActivity : AppCompatActivity() {
             }
 
             videoView.setOnCompletionListener{
-                var intent = Intent(this, GatchaResultActivity::class.java)
                 var gatchaResult = intent.getStringExtra("GATCHA_RESULT")
+                var intent = Intent(this, GatchaResultActivity::class.java)
+
                 intent.putExtra("GATCHA_RESULT",gatchaResult)
                 startActivity(intent)
                 finish()

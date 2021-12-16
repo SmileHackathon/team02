@@ -13,6 +13,11 @@ class MyApplication : Application(){
     var gatchaList = mutableListOf("running", "plank", "fukkin", "haikinn", "udetate")
     var existList = mutableListOf("squat", "walking")
 
+    // level関連
+    var playerLevel : Int = 1
+    var exp : Int = 0
+    var neededExp : Int = 10
+
     companion object {
         private var instance : MyApplication? = null
         fun  getInstance(): MyApplication {

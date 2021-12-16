@@ -30,16 +30,13 @@ class MainActivity : AppCompatActivity() {
         val progressBar : ProgressBar = findViewById(R.id.progressbar)
         val tvLevel : TextView = findViewById(R.id.tv_level)
 
+        //instance呼び出し
+        val myApp = MyApplication.getInstance()
 
+        progressBar.progress = myApp.exp
+        progressBar.secondaryProgress = myApp.neededExp
 
-        var playerLevel : Int = 1
-        var exp : Int = 0
-        var neededExp : Int = 10
-
-        progressBar.progress = exp
-        progressBar.secondaryProgress = neededExp
-
-        tvLevel.text = "Lv.$playerLevel"
+        tvLevel.text = "Lv."+myApp.playerLevel
     }
 }
 

@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">smile-hackathon-product</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_gatcha">Gatcha</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_daily_mission">DailyMission</string>
+    <string name="button">Your App Name</string>
 </resources>

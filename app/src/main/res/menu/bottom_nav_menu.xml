@@ -16,4 +16,9 @@
         android:icon="@drawable/daily"
         android:title="@string/title_daily_mission" />
 
+    <item
+        android:id="@+id/navigation_level"
+        android:icon="@drawable/daily"
+        android:title="@string/title_level" />
+
 </menu>

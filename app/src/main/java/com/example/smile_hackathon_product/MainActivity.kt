@@ -25,18 +25,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_gatcha, R.id.navigation_daily_mission))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        // level
-        val progressBar : ProgressBar = findViewById(R.id.progressbar)
-        val tvLevel : TextView = findViewById(R.id.tv_level)
-
-        //instance呼び出し
-        val myApp = MyApplication.getInstance()
-
-        progressBar.progress = myApp.exp
-        progressBar.secondaryProgress = myApp.neededExp
-
-        tvLevel.text = "Lv."+myApp.playerLevel
     }
 }
 

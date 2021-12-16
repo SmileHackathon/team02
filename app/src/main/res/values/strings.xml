@@ -5,4 +5,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_daily_mission">DailyMission</string>
     <string name="button">Your App Name</string>
+    <string name="title_level"></string>
 </resources>

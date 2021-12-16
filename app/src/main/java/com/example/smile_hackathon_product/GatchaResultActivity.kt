@@ -5,15 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import com.example.smile_hackathon_product.ui.home.HomeFragment
 
 class GatchaResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gatcha_result)
-
-        // fragmentの宣言
-        val homeFragment = HomeFragment()
 
         // Viewの取得
         var result : ImageView = findViewById(R.id.result)

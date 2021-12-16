@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ary_exercise">
+        <item>スクワット</item>
+        <item>腹筋</item>
+        <item>ウォーキング</item>
+        <item>ランニング</item>
+        <item>腕立て伏せ</item>
+        <item>背筋</item>
+        <item>プランク</item>
+    </string-array>
+
+    <integer-array name="ary_gacha">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+</resources>

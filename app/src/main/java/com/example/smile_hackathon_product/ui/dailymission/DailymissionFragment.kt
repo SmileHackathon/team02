@@ -23,6 +23,8 @@ import com.example.smile_hackathon_product.MyApplication
 class DailymissionFragment : Fragment() {
     private lateinit var dailymissionViewModel: DailymissionViewModel
 
+    var dailyMissionList = mutableListOf<String>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,36 +43,34 @@ class DailymissionFragment : Fragment() {
         val existListSize = myApp.existList.size
 
         if (myApp.existList.size <= 3){
-            myApp.dailyMissionList -= "null"
-            myApp.dailyMissionList += myApp.existList
+            dailyMissionList += myApp.existList
         } else {
-            myApp.dailyMissionList -= "null"
-            myApp.dailyMissionList += myApp.existList
+            dailyMissionList += myApp.existList
             for (i in 0..(existListSize-4)){
-                myApp.dailyMissionList -= myApp.dailyMissionList[(0 until myApp.dailyMissionList.size).random()]
+                dailyMissionList -= dailyMissionList[(0 until dailyMissionList.size).random()]
             }
         }
 
         // ボタン1の画像
-        if (myApp.dailyMissionList[0] == "squat"){
+        if (dailyMissionList[0] == "squat"){
             daily1.setImageResource(R.drawable.squat)
         }
-        if (myApp.dailyMissionList[0] == "walking"){
+        if (dailyMissionList[0] == "walking"){
             daily1.setImageResource(R.drawable.walking)
         }
-        if (myApp.dailyMissionList[0] == "running"){
+        if (dailyMissionList[0] == "running"){
             daily1.setImageResource(R.drawable.running)
         }
-        if (myApp.dailyMissionList[0] == "plank"){
+        if (dailyMissionList[0] == "plank"){
             daily1.setImageResource(R.drawable.plank)
         }
-        if (myApp.dailyMissionList[0] == "fukkin"){
+        if (dailyMissionList[0] == "fukkin"){
             daily1.setImageResource(R.drawable.fukkin)
         }
-        if (myApp.dailyMissionList[0] == "haikinn"){
+        if (dailyMissionList[0] == "haikinn"){
             daily1.setImageResource(R.drawable.haikinn)
         }
-        if (myApp.dailyMissionList[0] == "udetate"){
+        if (dailyMissionList[0] == "udetate"){
             daily1.setImageResource(R.drawable.udetate)
         }
 
@@ -80,31 +80,31 @@ class DailymissionFragment : Fragment() {
             val intent = Intent(activity, ExerciseActivity::class.java)
 
             // 運動名を送る
-            intent.putExtra("EXERCISE_NAME", myApp.dailyMissionList[0])
+            intent.putExtra("EXERCISE_NAME", dailyMissionList[0])
 
             startActivity(intent)
         }
 
         // ボタン2の画像
-        if (myApp.dailyMissionList[1] == "squat"){
+        if (dailyMissionList[1] == "squat"){
             daily2.setImageResource(R.drawable.squat)
         }
-        if (myApp.dailyMissionList[1] == "walking"){
+        if (dailyMissionList[1] == "walking"){
             daily2.setImageResource(R.drawable.walking)
         }
-        if (myApp.dailyMissionList[1] == "running"){
+        if (dailyMissionList[1] == "running"){
             daily2.setImageResource(R.drawable.running)
         }
-        if (myApp.dailyMissionList[1] == "plank"){
+        if (dailyMissionList[1] == "plank"){
             daily2.setImageResource(R.drawable.plank)
         }
-        if (myApp.dailyMissionList[1] == "fukkin"){
+        if (dailyMissionList[1] == "fukkin"){
             daily2.setImageResource(R.drawable.fukkin)
         }
-        if (myApp.dailyMissionList[1] == "haikinn"){
+        if (dailyMissionList[1] == "haikinn"){
             daily2.setImageResource(R.drawable.haikinn)
         }
-        if (myApp.dailyMissionList[1] == "udetate"){
+        if (dailyMissionList[1] == "udetate"){
             daily2.setImageResource(R.drawable.udetate)
         }
 
@@ -114,33 +114,33 @@ class DailymissionFragment : Fragment() {
             val intent = Intent(activity, ExerciseActivity::class.java)
 
             // 運動名を送る
-            intent.putExtra("EXERCISE_NAME", myApp.dailyMissionList[1])
+            intent.putExtra("EXERCISE_NAME", dailyMissionList[1])
 
             startActivity(intent)
         }
 
-        if (myApp.dailyMissionList.size == 3){
+        if (dailyMissionList.size >= 3){
 
             // ボタン3の画像
-            if (myApp.dailyMissionList[2] == "squat"){
+            if (dailyMissionList[2] == "squat"){
                 daily3.setImageResource(R.drawable.squat)
             }
-            if (myApp.dailyMissionList[2] == "walking"){
+            if (dailyMissionList[2] == "walking"){
                 daily3.setImageResource(R.drawable.walking)
             }
-            if (myApp.dailyMissionList[2] == "running"){
+            if (dailyMissionList[2] == "running"){
                 daily3.setImageResource(R.drawable.running)
             }
-            if (myApp.dailyMissionList[2] == "plank"){
+            if (dailyMissionList[2] == "plank"){
                 daily3.setImageResource(R.drawable.plank)
             }
-            if (myApp.dailyMissionList[2] == "fukkin"){
+            if (dailyMissionList[2] == "fukkin"){
                 daily3.setImageResource(R.drawable.fukkin)
             }
-            if (myApp.dailyMissionList[2] == "haikinn"){
+            if (dailyMissionList[2] == "haikinn"){
                 daily3.setImageResource(R.drawable.haikinn)
             }
-            if (myApp.dailyMissionList[2] == "udetate"){
+            if (dailyMissionList[2] == "udetate"){
                 daily3.setImageResource(R.drawable.udetate)
             }
 
@@ -150,7 +150,7 @@ class DailymissionFragment : Fragment() {
                 val intent = Intent(activity, ExerciseActivity::class.java)
 
                 // 運動名を送る
-                intent.putExtra("EXERCISE_NAME", myApp.dailyMissionList[2])
+                intent.putExtra("EXERCISE_NAME", dailyMissionList[2])
 
                 startActivity(intent)
             }

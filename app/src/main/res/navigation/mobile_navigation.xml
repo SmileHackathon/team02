@@ -12,16 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.smile_hackathon_product.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.smile_hackathon_product.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_gatcha"
+        android:name="com.example.smile_hackathon_product.ui.gatcha.GatchaFragment"
+        android:label="@string/title_gatcha"
+        tools:layout="@layout/fragment_gatcha" />
 
     <fragment
         android:id="@+id/navigation_daily_mission"

@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         //日時取得
-        // TODO:このフォーマットじゃだめ. year, month, dayだけでいい。またそれぞれを分割してint型で持つ
         val nowDate: LocalDate = LocalDate.now()
         // jsonから記録してた日時取得
         val jsonObj = recordActivity().readJson("date.json")

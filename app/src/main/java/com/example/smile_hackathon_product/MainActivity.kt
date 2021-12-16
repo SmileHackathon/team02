@@ -1,22 +1,18 @@
 package com.example.smile_hackathon_product
 
-import android.content.Intent
-import android.content.res.AssetManager
+import android.os.Build
 import android.os.Bundle
-import android.renderscript.ScriptGroup
-import android.util.Log
-import android.widget.ImageButton
+import androidx.annotation.RequiresApi
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.smile_hackathon_product.ui.dashboard.DashboardFragment
-import com.example.smile_hackathon_product.ui.recordActivity
-import org.json.JSONObject
 import java.io.*
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.*
 
 
@@ -37,19 +33,22 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
         //日時取得
         // TODO:このフォーマットじゃだめ. year, month, dayだけでいい。またそれぞれを分割してint型で持つ
-        var dateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
-        var date = Date(System.currentTimeMillis())
-        val nowDate = dateFormat.format(date)
+        val nowDate: LocalDate = LocalDate.now()
         // jsonから記録してた日時取得
         val jsonObj = recordActivity().readJson("date.json")
-        val recordedDate = jsonObj.get("day")
-        if( nowDate < recordedDate ) {
+        val recordedDate = jsonObj.getInt("day")
+        if( nowDate.dayOfMonth < recordedDate ) {
             // デイリーボーナスをゲットする
             getDailyBonus()
         }
+        // nowDateをdate.jsonに更新する
+        jsonObj.put("year", nowDate.year)
+        jsonObj.put("month", nowDate.month)
+        jsonObj.put("day", nowDate.dayOfMonth)
     }
 }

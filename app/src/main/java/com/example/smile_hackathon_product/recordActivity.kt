@@ -1,4 +1,4 @@
-package com.example.smile_hackathon_product.ui
+package com.example.smile_hackathon_product
 
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity

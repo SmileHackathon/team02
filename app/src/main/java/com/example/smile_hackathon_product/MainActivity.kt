@@ -31,15 +31,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun getDailyBonus(plusPoint: Int) {
         myApp.gatchaPoint += plusPoint
-        myApp.putValue("gatchaPoint", myApp.gatchaPoint)
+        val editor = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE).edit()
+        editor.putInt(myApp.gatchaPointStr, myApp.gatchaPoint)
+        editor.apply()
     }
 
     private fun dailyBonus(){
+        val sharedPreference = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE)
         //日時取得
         val nowDate: LocalDate = LocalDate.now()
         // 記録してた日時取得
         val visitedDateKey:String = "lastVisitedDate"
-        val recordedDate = myApp.getValueString(visitedDateKey)
+//        val recordedDate = myApp.getValueString(visitedDateKey)
+        val recordedDate = sharedPreference.getString(visitedDateKey, "")
         if( nowDate.toString() != recordedDate ) {
             // デイリーボーナスをゲットする
             getDailyBonus(10)
@@ -48,30 +52,33 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         // 日時更新
-        myApp.putValue(visitedDateKey, nowDate.toString())
+//        myApp.putValue(visitedDateKey, nowDate.toString())
+        val editor = sharedPreference.edit()
+        editor.putString(visitedDateKey, nowDate.toString())
+        editor.apply()
     }
 
 //     SaveVariable.kt内の変数を初期化する
 //     ここでの初期化とはsharedPreferenceに記録されている値を呼び出すか、記録されていなければ指定した値をsharedPreferenceに記録してそれを与える
     public fun initVariables() {
-        var sharedPreference = getSharedPreferences("data_preference", Context.MODE_PRIVATE)
-        var editor = sharedPreference.edit()
+        var sharedPreference = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE)
 
         //ガチャポイント、経験値、レベル
-        myApp.gatchaPoint = sharedPreference.getInt("gatchaPoint", 0)
-        myApp.exp = sharedPreference.getInt("exp", 0)
-        myApp.playerLevel = sharedPreference.getInt("playerLevel", 1)
+        myApp.gatchaPoint = sharedPreference.getInt(myApp.gatchaPointStr, 0)
+        myApp.exp = sharedPreference.getInt(myApp.expStr, 0)
+        myApp.playerLevel = sharedPreference.getInt(myApp.playerLevelStr, 1)
 
-        // squatとwalkingは最初からある
-        editor.putInt("squat", 1)
-        editor.putInt("walking", 1)
+        var editor = sharedPreference.edit()
+    // squatとwalkingは最初からある
+        editor.putInt("Existed_squat", 1)
+        editor.putInt("Existed_walking", 1)
         editor.apply()
 
         // exerciseMapとexercisePlayMapの初期化
         for (exerciseName in myApp.allExerciseList) {
             // 0で初期化
             myApp.exerciseMap[exerciseName] = sharedPreference.getInt("Existed_" + exerciseName, 0)
-            myApp.exercisePlayMap[exerciseName] = sharedPreference.getInt("PLayed_"+ exerciseName, 0)
+            myApp.exercisePlayMap[exerciseName] = sharedPreference.getInt("Played_"+ exerciseName, 0)
         }
 
         // existListとgatchaListの初期化
@@ -91,6 +98,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
+        initVariables()
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -100,12 +108,15 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         // 画面開くとデイリーボーナスかどうか判断する
-//        dailyBonus()
+        dailyBonus()
+
     }
 
     override fun onStart() {
         super.onStart()
-        initVariables()
+        Log.d("init", myApp.exerciseMap.toString())
+        Log.d("init2", packageName)
     }
 }
+
 

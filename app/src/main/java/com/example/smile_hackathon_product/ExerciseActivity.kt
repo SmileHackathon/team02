@@ -1,5 +1,6 @@
 package com.example.smile_hackathon_product
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -59,7 +60,10 @@ class ExerciseActivity : AppCompatActivity(){
             intent.putExtra("EXERCISE_EXP", exerciseExp)
             myApp.gatchaPoint += getPoint
             // ガチャポイントを保存
-            myApp.putValue("gatchaPoint", myApp.gatchaPoint)
+            val editor = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE).edit()
+            editor.putInt(myApp.gatchaPointStr, myApp.gatchaPoint)
+            editor.apply()
+
             startActivity(intent)
             finish()
         }

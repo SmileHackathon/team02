@@ -22,26 +22,10 @@ class MyApplication : Application(){
     var exp : Int = 0
     var neededExp : Int = playerLevel * (10 + playerLevel*10) / 2
 
-    val preferencePath: String = "data_preference"
-
-    public fun putValue(key:String, value:Int){
-        var editor = getSharedPreferences(preferencePath, Context.MODE_PRIVATE).edit()
-        editor.putInt(key, value)
-        editor.apply()
-    }
-    public fun putValue(key:String, value:String){
-        var editor = getSharedPreferences(preferencePath, Context.MODE_PRIVATE).edit()
-        editor.putString(key, value)
-        editor.apply()
-    }
-    public fun getValueInt(key:String): Int {
-        var sharedPreference = getSharedPreferences(preferencePath, Context.MODE_PRIVATE)
-        return sharedPreference.getInt(key, -1)
-    }
-    public fun getValueString(key:String): String? {
-        var sharedPreference = getSharedPreferences(preferencePath, Context.MODE_PRIVATE)
-        return sharedPreference.getString(key, "")
-    }
+    val preferencePath: String = "com.example.smile_hackathon_product_preference"
+    val gatchaPointStr = "gatchaPoint"
+    val expStr = "exp"
+    val playerLevelStr = "playerLevel"
 
     companion object {
         private var instance : MyApplication? = null

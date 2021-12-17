@@ -1,5 +1,6 @@
 package com.example.smile_hackathon_product
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -63,7 +64,8 @@ class GatchaResultActivity : AppCompatActivity() {
                 // ガチャポイントを100消費する
                 myApp.gatchaPoint -= 100
                 // 保存する
-                myApp.putValue("gatchaPoint", myApp.gatchaPoint)
+                val editor = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE).edit()
+                editor.putInt(myApp.gatchaPointStr, myApp.gatchaPoint)
                 // ガチャリストからあたったモノを削除する
                 myApp.gatchaList.minusAssign(gatchaResult)
                 // existListにあたったモノを追加する

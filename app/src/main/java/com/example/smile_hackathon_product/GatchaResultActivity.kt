@@ -26,7 +26,22 @@ class GatchaResultActivity : AppCompatActivity() {
         tvGatchaResult.text = "所有ポイント" + myApp.gatchaPoint.toString() + "ポイント"
 
         // ガチャ結果の表示
-        var getGatchaResult = intent.getStringExtra("GATCHA_RESULT")
+        val getGatchaResultIndex = intent.getIntExtra("GATCHA_RESULT_INDEX", 0)
+        var getGatchaResult = myApp.gatchaList[getGatchaResultIndex]
+
+        // 保存する
+        val editor = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE).edit()
+        editor.putInt(myApp.gatchaPointStr, myApp.gatchaPoint)
+        editor.apply()
+        // ガチャリストからあたったモノを削除する
+        myApp.gatchaList.minusAssign(getGatchaResult)
+        // existListにあたったモノを追加する
+        myApp.existList.plusAssign(getGatchaResult)
+        // あたったモノのフラグを建てる
+        myApp.exerciseMap[getGatchaResult] = 1
+        //保存
+        editor.putInt("Existed_" + getGatchaResult, 1)
+        editor.apply()
 
         if (getGatchaResult == "squat"){
             result.setImageResource(R.drawable.squat)

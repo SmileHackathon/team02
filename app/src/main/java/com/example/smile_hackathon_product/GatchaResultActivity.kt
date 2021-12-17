@@ -57,8 +57,8 @@ class GatchaResultActivity : AppCompatActivity() {
                 var gatchaResult = myApp.gatchaList[gatchaResultIndex]
 
                 myApp.gatchaPoint -= 100
-                myApp.gatchaList -= gatchaResult
-                myApp.existList += gatchaResult
+                myApp.gatchaList.minusAssign(gatchaResult)
+                myApp.existList.plusAssign(gatchaResult)
                 myApp.exerciseMap[gatchaResult] = 1
 
                 // リザルト画面にガチャ結果を送る
@@ -73,13 +73,5 @@ class GatchaResultActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-    }
-    public fun getDailyBonus(gatchaPoint: Int, plusPoint: Int): Int {
-        //json開く
-        val jsonObj = recordActivity().readJson("data.json")
-        var gatchaPoint = jsonObj.getJSONObject("point").getInt("gatcha")
-        gatchaPoint += plusPoint
-        jsonObj.getJSONObject("point").put("gatcha", gatchaPoint)
-        return gatchaPoint
     }
 }

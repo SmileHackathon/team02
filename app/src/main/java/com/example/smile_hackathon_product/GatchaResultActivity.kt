@@ -25,36 +25,39 @@ class GatchaResultActivity : AppCompatActivity() {
         tvGatchaResult.text = "所有ポイント" + myApp.gatchaPoint.toString() + "ポイント"
 
         // ガチャ結果の表示
-        var gatchaResult = intent.getStringExtra("GATCHA_RESULT")
+        var getGatchaResult = intent.getStringExtra("GATCHA_RESULT")
 
-        if (gatchaResult == "squat"){
+        if (getGatchaResult == "squat"){
             result.setImageResource(R.drawable.squat)
         }
-        if (gatchaResult == "walking"){
+        if (getGatchaResult == "walking"){
             result.setImageResource(R.drawable.walking)
         }
-        if (gatchaResult == "running"){
+        if (getGatchaResult == "running"){
             result.setImageResource(R.drawable.running)
         }
-        if (gatchaResult == "plank"){
+        if (getGatchaResult == "plank"){
             result.setImageResource(R.drawable.plank)
         }
-        if (gatchaResult == "fukkin"){
+        if (getGatchaResult == "fukkin"){
             result.setImageResource(R.drawable.fukkin)
         }
-        if (gatchaResult == "haikinn"){
+        if (getGatchaResult == "haikinn"){
             result.setImageResource(R.drawable.haikinn)
         }
-        if (gatchaResult == "udetate"){
+        if (getGatchaResult == "udetate"){
             result.setImageResource(R.drawable.udetate)
+        }
+        if (getGatchaResult == "momoage"){
+            result.setImageResource(R.drawable.momoage)
         }
 
         // ボタンが押されたときの処理
         if (myApp.gatchaPoint >= 100) {
             retake.setOnClickListener {
-                var intent = Intent(this, GatchaResultActivity::class.java)
+                val intent = Intent(this, GatchaResultActivity::class.java)
                 val gatchaResultIndex = myApp.gatchaList.indices.random()
-                var gatchaResult = myApp.gatchaList[gatchaResultIndex]
+                val gatchaResult = myApp.gatchaList[gatchaResultIndex]
 
                 myApp.gatchaPoint -= 100
                 myApp.gatchaList.minusAssign(gatchaResult)

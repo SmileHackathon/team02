@@ -19,6 +19,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import com.example.smile_hackathon_product.ExerciseActivity
 import com.example.smile_hackathon_product.MyApplication
+import org.w3c.dom.Text
 
 class DailymissionFragment : Fragment() {
     private lateinit var dailymissionViewModel: DailymissionViewModel
@@ -34,14 +35,19 @@ class DailymissionFragment : Fragment() {
             ViewModelProvider(this).get(DailymissionViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dailymission, container, false)
 
-        var daily1 : ImageButton = root.findViewById(R.id.daily1)
-        var daily2 : ImageButton = root.findViewById(R.id.daily2)
-        var daily3 : ImageButton = root.findViewById(R.id.daily3)
+        // Viewの取得
+        val daily1 : ImageButton = root.findViewById(R.id.daily1)
+        val daily2 : ImageButton = root.findViewById(R.id.daily2)
+        val daily3 : ImageButton = root.findViewById(R.id.daily3)
+        val tvDaily1 : TextView = root.findViewById(R.id.tv_daily1)
+        val tvDaily2 : TextView = root.findViewById(R.id.tv_daily2)
+        val tvDaily3 : TextView = root.findViewById(R.id.tv_daily3)
 
         //instance呼び出し
         val myApp = MyApplication.getInstance()
         val existListSize = myApp.existList.size
 
+        // 持っている運動のリストから、ランダムでデイリーミッションを選ぶ
         if (myApp.existList.size <= 3){
             dailyMissionList += myApp.existList
         } else {
@@ -73,17 +79,31 @@ class DailymissionFragment : Fragment() {
         if (dailyMissionList[0] == "udetate"){
             daily1.setImageResource(R.drawable.udetate)
         }
+        if (dailyMissionList[0] == "momoage"){
+            daily1.setImageResource(R.drawable.momoage)
+        }
 
-        // ボタン1が押されたときの処理
-        daily1.setOnClickListener{
-            // 画面遷移
-            val intent = Intent(activity, ExerciseActivity::class.java)
+        // デイリーミッション未達成時
+        if (myApp.exercisePlayMap[dailyMissionList[0]] == 0) {
+            // text
+            tvDaily1.text = "ミッション\n" +
+                    "　未達成"
+            // ボタン1が押されたときの処理
+            daily1.setOnClickListener {
+                // 画面遷移
+                val intent = Intent(activity, ExerciseActivity::class.java)
 
-            // 運動名を送る
-            intent.putExtra("EXERCISE_NAME", dailyMissionList[0])
-            intent.putExtra("POINT", 10)
+                // 運動名を送る
+                intent.putExtra("EXERCISE_NAME", dailyMissionList[0])
+                intent.putExtra("POINT", 10)
 
-            startActivity(intent)
+                startActivity(intent)
+            }
+        }
+        // ミッション達成時
+        else {
+            tvDaily1.text = "ミッション\n" +
+                    "　達成！"
         }
 
         // ボタン2の画像
@@ -108,17 +128,31 @@ class DailymissionFragment : Fragment() {
         if (dailyMissionList[1] == "udetate"){
             daily2.setImageResource(R.drawable.udetate)
         }
+        if (dailyMissionList[1] == "momoage"){
+            daily2.setImageResource(R.drawable.momoage)
+        }
 
-        // ボタン2が押されたときの処理
-        daily2.setOnClickListener{
-            // 画面遷移
-            val intent = Intent(activity, ExerciseActivity::class.java)
+        // ミッション未達成時
+        if (myApp.exercisePlayMap[dailyMissionList[1]] == 0) {
+            // text
+            tvDaily2.text = "ミッション\n" +
+                    "　未達成"
+            // ボタン2が押されたときの処理
+            daily2.setOnClickListener {
+                // 画面遷移
+                val intent = Intent(activity, ExerciseActivity::class.java)
 
-            // 運動名を送る
-            intent.putExtra("EXERCISE_NAME", dailyMissionList[1])
-            intent.putExtra("POINT", 10)
+                // 運動名を送る
+                intent.putExtra("EXERCISE_NAME", dailyMissionList[1])
+                intent.putExtra("POINT", 10)
 
-            startActivity(intent)
+                startActivity(intent)
+            }
+        }
+        // ミッション達成時
+        else{
+            tvDaily2.text = "ミッション\n" +
+                    "　達成!"
         }
 
         if (dailyMissionList.size >= 3){
@@ -145,17 +179,31 @@ class DailymissionFragment : Fragment() {
             if (dailyMissionList[2] == "udetate"){
                 daily3.setImageResource(R.drawable.udetate)
             }
+            if (dailyMissionList[2] == "momoage"){
+                daily3.setImageResource(R.drawable.momoage)
+            }
 
-            // ボタン3が押されたときの処理
-            daily3.setOnClickListener{
-                // 画面遷移
-                val intent = Intent(activity, ExerciseActivity::class.java)
+            // ミッション未達成時
+            if (myApp.exercisePlayMap[dailyMissionList[2]] == 0) {
+                // text
+                tvDaily3.text = "ミッション\n" +
+                        "　未達成"
+                // ボタン3が押されたときの処理
+                daily3.setOnClickListener {
+                    // 画面遷移
+                    val intent = Intent(activity, ExerciseActivity::class.java)
 
-                // 運動名を送る
-                intent.putExtra("EXERCISE_NAME", dailyMissionList[2])
-                intent.putExtra("POINT", 10)
+                    // 運動名を送る
+                    intent.putExtra("EXERCISE_NAME", dailyMissionList[2])
+                    intent.putExtra("POINT", 10)
 
-                startActivity(intent)
+                    startActivity(intent)
+                }
+            }
+            // ミッション達成時
+            else {
+                tvDaily3.text = "ミッション\n" +
+                        "　達成！"
             }
         }
 

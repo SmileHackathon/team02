@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         myApp.gatchaPoint = sharedPreference.getInt(myApp.gatchaPointStr, 0)
         myApp.exp = sharedPreference.getInt(myApp.expStr, 0)
         myApp.playerLevel = sharedPreference.getInt(myApp.playerLevelStr, 1)
+        myApp.neededExp = myApp.playerLevel * (10 + myApp.playerLevel*10) / 2
 
         var editor = sharedPreference.edit()
     // squatとwalkingは最初からある
@@ -98,7 +99,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        initVariables()
+//        initVariables()
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -114,6 +115,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        initVariables()
         Log.d("init", myApp.exerciseMap.toString())
         Log.d("init2", packageName)
     }

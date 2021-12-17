@@ -12,7 +12,7 @@ class DailyBonusActivity : AppCompatActivity() {
 
         // Viewの取得
         var tvBonus : TextView = findViewById(R.id.tv_bonus)
-//        var button : Button = findViewById(R.id.button)
+        var button : Button = findViewById(R.id.button)
 
         //instance呼び出し
         val myApp = MyApplication.getInstance()
@@ -21,9 +21,9 @@ class DailyBonusActivity : AppCompatActivity() {
         tvBonus.text = myApp.gatchaPoint.toString() + "ガチャポイントを獲得しました！"
 
         // ボタンが押されたときの処理
-//        button.setOnClickListener{
-//            finish()
-//        }
+        button.setOnClickListener{
+            finish()
+        }
 
 
     }

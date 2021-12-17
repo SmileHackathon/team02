@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
     var myApp = MyApplication.getInstance()
 
     private fun getDailyBonus(plusPoint: Int) {
-        //json開く
         myApp.gatchaPoint += plusPoint
         myApp.putValue("gatchaPoint", myApp.gatchaPoint)
     }
@@ -55,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 //     SaveVariable.kt内の変数を初期化する
 //     ここでの初期化とはsharedPreferenceに記録されている値を呼び出すか、記録されていなければ指定した値をsharedPreferenceに記録してそれを与える
     public fun initVariables() {
-        var sharedPreference = getSharedPreferences(packageName+"_preference", Context.MODE_PRIVATE)
+        var sharedPreference = getSharedPreferences("data_preference", Context.MODE_PRIVATE)
         var editor = sharedPreference.edit()
 
         //ガチャポイント、経験値、レベル
@@ -92,7 +91,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-//        initVariables()
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -103,6 +101,11 @@ class MainActivity : AppCompatActivity() {
 
         // 画面開くとデイリーボーナスかどうか判断する
 //        dailyBonus()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        initVariables()
     }
 }
 

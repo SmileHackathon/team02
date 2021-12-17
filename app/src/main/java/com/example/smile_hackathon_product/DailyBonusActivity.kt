@@ -25,9 +25,9 @@ class DailyBonusActivity : AppCompatActivity() {
         button.setOnClickListener{
             finish()
         }
-        button.setOnClickListener{
-            finish()
-        }
+//        button.setOnClickListener{
+//            finish()
+//        }
         button.setOnClickListener{
             finish()
         }

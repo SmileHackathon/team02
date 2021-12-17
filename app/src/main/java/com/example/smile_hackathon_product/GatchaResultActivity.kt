@@ -63,7 +63,7 @@ class GatchaResultActivity : AppCompatActivity() {
                 // ガチャポイントを100消費する
                 myApp.gatchaPoint -= 100
                 // 保存する
-//                myApp.putValue("gatchaPoint", myApp.gatchaPoint)
+                myApp.putValue("gatchaPoint", myApp.gatchaPoint)
                 // ガチャリストからあたったモノを削除する
                 myApp.gatchaList.minusAssign(gatchaResult)
                 // existListにあたったモノを追加する

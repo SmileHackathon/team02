@@ -13,6 +13,7 @@ class MovieActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie)
+        // 映像
         var videoView = findViewById<VideoView>(R.id.videoView)
         Handler(mainLooper).postDelayed({
             var moviePath = Uri.parse("android.resource://"+ packageName +"/"+ R.raw.effect)

@@ -58,6 +58,8 @@ class ExerciseActivity : AppCompatActivity(){
             var intent = Intent(this, ExerciseResultActivity::class.java)
             intent.putExtra("EXERCISE_EXP", exerciseExp)
             myApp.gatchaPoint += getPoint
+            // ガチャポイントを保存
+            myApp.putValue("gatchaPoint", myApp.gatchaPoint)
             startActivity(intent)
             finish()
         }

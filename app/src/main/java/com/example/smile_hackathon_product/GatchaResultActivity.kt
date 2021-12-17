@@ -18,7 +18,7 @@ class GatchaResultActivity : AppCompatActivity() {
         var homeButton : Button = findViewById(R.id.home_button)
         var tvGatchaResult : TextView = findViewById(R.id.tv_gatcha_result)
 
-        //instance呼び出し
+        //SaveVariableのInstance呼び出し
         val myApp = MyApplication.getInstance()
 
         // 所有ポイントの表示
@@ -53,15 +53,22 @@ class GatchaResultActivity : AppCompatActivity() {
         }
 
         // ボタンが押されたときの処理
+        // ガチャポイントが100以上ある時のみガチャが引ける
         if (myApp.gatchaPoint >= 100) {
             retake.setOnClickListener {
                 val intent = Intent(this, GatchaResultActivity::class.java)
                 val gatchaResultIndex = myApp.gatchaList.indices.random()
                 val gatchaResult = myApp.gatchaList[gatchaResultIndex]
 
+                // ガチャポイントを100消費する
                 myApp.gatchaPoint -= 100
+                // 保存する
+//                myApp.putValue("gatchaPoint", myApp.gatchaPoint)
+                // ガチャリストからあたったモノを削除する
                 myApp.gatchaList.minusAssign(gatchaResult)
+                // existListにあたったモノを追加する
                 myApp.existList.plusAssign(gatchaResult)
+                // あたったモノのフラグを建てる
                 myApp.exerciseMap[gatchaResult] = 1
 
                 // リザルト画面にガチャ結果を送る
@@ -71,6 +78,7 @@ class GatchaResultActivity : AppCompatActivity() {
                 finish()
             }
         }
+        // ホームボタンを押せばホームに移動する
         homeButton.setOnClickListener{
             var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

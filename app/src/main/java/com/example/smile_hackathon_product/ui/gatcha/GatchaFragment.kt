@@ -1,7 +1,9 @@
 package com.example.smile_hackathon_product.ui.gatcha
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,6 +56,7 @@ class GatchaFragment : Fragment() {
 
                 // リザルト画面にガチャ結果を送る
                 intent.putExtra("GATCHA_RESULT", gatchaResult)
+                intent.putExtra("GATCHA_RESULT_INDEX", gatchaResultIndex)
 
                 startActivity(intent)
             }

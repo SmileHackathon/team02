@@ -66,12 +66,16 @@ class GatchaResultActivity : AppCompatActivity() {
                 // 保存する
                 val editor = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE).edit()
                 editor.putInt(myApp.gatchaPointStr, myApp.gatchaPoint)
+                editor.apply()
                 // ガチャリストからあたったモノを削除する
                 myApp.gatchaList.minusAssign(gatchaResult)
                 // existListにあたったモノを追加する
                 myApp.existList.plusAssign(gatchaResult)
                 // あたったモノのフラグを建てる
                 myApp.exerciseMap[gatchaResult] = 1
+                //保存
+                editor.putInt("Existed_" + gatchaResult, 1)
+                editor.apply()
 
                 // リザルト画面にガチャ結果を送る
                 intent.putExtra("GATCHA_RESULT", gatchaResult)

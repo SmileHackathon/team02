@@ -27,6 +27,7 @@ class MyApplication : Application(){
     val expStr = "exp"
     val playerLevelStr = "playerLevel"
 
+
     companion object {
         private var instance : MyApplication? = null
         fun  getInstance(): MyApplication {

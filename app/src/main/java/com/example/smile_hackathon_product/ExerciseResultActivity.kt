@@ -30,16 +30,18 @@ class ExerciseResultActivity : AppCompatActivity(){
         editor.putInt("exp", myApp.exp)
         editor.apply()
 
+        // レベルアップに必要な経験値を満たしてたらレベルアップする
         if (myApp.exp >= myApp.neededExp){
             myApp.playerLevel += 1
             myApp.neededExp = myApp.playerLevel * (10 + myApp.playerLevel*10) / 2
             if (myApp.playerLevel%10 == 0) {
                 myApp.gatchaPoint += 100
-                //保存
             }else{
                 myApp.gatchaPoint += 10
             }
+            // 保存
             editor.putInt(myApp.gatchaPointStr, myApp.gatchaPoint)
+            editor.putInt(myApp.playerLevelStr, myApp.playerLevel)
             editor.apply()
         }
 

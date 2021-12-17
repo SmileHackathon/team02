@@ -30,31 +30,56 @@ class ExerciseActivity : AppCompatActivity(){
         val getPoint = intent.getIntExtra("POINT", 0)
 
 
+        val sharedPreference = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE)
         // 完了ボタンが押されたときの処理
         finishedExerciseButton.setOnClickListener{
             if (getExerciseName == "squat") {
                 myApp.exercisePlayMap["squat"] = 1
+                val editor = sharedPreference.edit()
+                editor.putInt("Played_squat", 1)
+                editor.apply()
             }
             if (getExerciseName == "walking") {
                 myApp.exercisePlayMap["walking"] = 1
+                val editor = sharedPreference.edit()
+                editor.putInt("Played_walking", 1)
+                editor.apply()
             }
             if (getExerciseName == "running") {
                 myApp.exercisePlayMap["running"] = 1
+                val editor = sharedPreference.edit()
+                editor.putInt("Played_running", 1)
+                editor.apply()
             }
             if (getExerciseName == "plank") {
                 myApp.exercisePlayMap["plank"] = 1
+                val editor = sharedPreference.edit()
+                editor.putInt("Played_plank", 1)
+                editor.apply()
             }
             if (getExerciseName == "fukkin") {
                 myApp.exercisePlayMap["fukkin"] = 1
+                val editor = sharedPreference.edit()
+                editor.putInt("Played_fukking", 1)
+                editor.apply()
             }
             if (getExerciseName == "haikinn") {
                 myApp.exercisePlayMap["haikinn"] = 1
+                val editor = sharedPreference.edit()
+                editor.putInt("Played_haikinn", 1)
+                editor.apply()
             }
             if (getExerciseName == "udetate") {
                 myApp.exercisePlayMap["udetate"] = 1
+                val editor = sharedPreference.edit()
+                editor.putInt("Played_udetate", 1)
+                editor.apply()
             }
             if (getExerciseName == "momoage") {
                 myApp.exercisePlayMap["momoage"] = 1
+                val editor = sharedPreference.edit()
+                editor.putInt("Played_momoage", 1)
+                editor.apply()
             }
             var intent = Intent(this, ExerciseResultActivity::class.java)
             intent.putExtra("EXERCISE_EXP", exerciseExp)

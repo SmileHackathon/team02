@@ -15,8 +15,9 @@ class MyApplication : Application(){
     var exercisePlayMap = mutableMapOf<String, Int>("momoage" to 1, "squat" to 0, "walking" to 0, "running" to 0, "plank" to 0, "fukkin" to 0, "haikinn" to 0, "udetate" to 0)
     var gatchaList = mutableListOf<String>()
     var existList = mutableListOf<String>()
-    var dailyMissionList = mutableListOf<String>()
+    var dailyMissionList = mutableListOf<String>("", "", "")
     var gatchaPoint = 0
+    val visitedDate:String = "lastVisitedDate"
 
     // level関連
     var playerLevel : Int = 1

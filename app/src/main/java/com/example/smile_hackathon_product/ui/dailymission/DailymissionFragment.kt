@@ -49,14 +49,14 @@ class DailymissionFragment : Fragment() {
         val existListSize = myApp.existList.size
 
         // 持っている運動のリストから、ランダムでデイリーミッションを選ぶ
-        if (myApp.existList.size <= 3){
-            dailyMissionList.plusAssign(myApp.existList)
-        } else {
-            dailyMissionList.plusAssign(myApp.existList)
-            for (i in 0..(existListSize-4)){
-                dailyMissionList.minusAssign(dailyMissionList[(0 until dailyMissionList.size).random()])
-            }
-        }
+//        if (myApp.existList.size <= 3){
+//            dailyMissionList.plusAssign(myApp.existList)
+//        } else {
+//            dailyMissionList.plusAssign(myApp.existList)
+//            for (i in 0..(existListSize-4)){
+//                dailyMissionList.minusAssign(dailyMissionList[(0 until dailyMissionList.size).random()])
+//            }
+//        }
 
         // ボタン1の画像
         if (dailyMissionList[0] == "squat"){

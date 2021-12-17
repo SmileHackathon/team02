@@ -36,40 +36,65 @@ class MainActivity : AppCompatActivity() {
         editor.apply()
     }
 
-    private fun dailyBonus(){
+    // TODO: dailyMission一日一回になってなかった. 保存すべきかも
+    // TODO: exercisePlayMapも一日一回更新する
+    private fun dailySetting(){
         val sharedPreference = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE)
         //日時取得
         val nowDate: LocalDate = LocalDate.now()
         // 記録してた日時取得
-        val visitedDateKey:String = "lastVisitedDate"
-//        val recordedDate = myApp.getValueString(visitedDateKey)
-        val recordedDate = sharedPreference.getString(visitedDateKey, "")
+        val recordedDate = sharedPreference.getString(myApp.visitedDate, "")
+
         if( nowDate.toString() != recordedDate ) {
-            // デイリーボーナスをゲットする
-            getDailyBonus(10)
-            // デイリーミッション更新
-            if (myApp.existList.size <= 3){
-                myApp.dailyMissionList.plusAssign(myApp.existList)
-            } else {
-                myApp.dailyMissionList.plusAssign(myApp.existList)
-                for (i in 0..(myApp.existList.size-4)){
-                    myApp.dailyMissionList.minusAssign(myApp.dailyMissionList[(0 until myApp.dailyMissionList.size).random()])
+                // デイリーボーナスをゲットする
+                getDailyBonus(10)
+                // デイリーミッション更新=============
+
+                val editor = sharedPreference.edit()
+                if (myApp.existList.size <= 3){
+                    myApp.dailyMissionList.plusAssign(myApp.existList)
+                    for (i in myApp.existList.indices) {
+                        editor.putString("dailyMission$i", myApp.existList[i])
+                        editor.apply()
+                    }
+                    // existList.sizeが2の時
+                    if (myApp.existList.size == 2) {
+                        editor.putString("dailyMission2", "")
+                        editor.apply()
+                    }
+                } else {
+                    // dailyMissionにexistList全部足す
+                    myApp.dailyMissionList.plusAssign(myApp.existList)
+                    // 残り3個になるまでdailyMissionから抜いていく
+                    for (i in 0..(myApp.existList.size-4)){
+                        // なるほど
+                        myApp.dailyMissionList.minusAssign(myApp.dailyMissionList[(0 until myApp.dailyMissionList.size).random()])
+                    }
+                    for (i in 0..2) {
+                        editor.putString("dailyMission$i", myApp.dailyMissionList[i])
+                        editor.apply()
+                    }
                 }
+                // =================================
+                // exercisePlayMapを更新する
+                for (exerciseName in myApp.allExerciseList) {
+                    editor.putInt("Played_$exerciseName", 0)
+                }
+                editor.apply()
+                // 画面遷移
+                var intent = Intent(this, DailyBonusActivity::class.java)
+                startActivity(intent)
             }
-            // 画面遷移
-            var intent = Intent(this, DailyBonusActivity::class.java)
-            startActivity(intent)
-        }
         // 日時更新
 //        myApp.putValue(visitedDateKey, nowDate.toString())
         val editor = sharedPreference.edit()
-        editor.putString(visitedDateKey, nowDate.toString())
+        editor.putString(myApp.visitedDate, nowDate.toString())
         editor.apply()
     }
 
 //     SaveVariable.kt内の変数を初期化する
 //     ここでの初期化とはsharedPreferenceに記録されている値を呼び出すか、記録されていなければ指定した値をsharedPreferenceに記録してそれを与える
-    public fun initVariables() {
+     fun initVariables() {
         var sharedPreference = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE)
 
         //ガチャポイント、経験値、レベル
@@ -87,8 +112,8 @@ class MainActivity : AppCompatActivity() {
         // exerciseMapとexercisePlayMapの初期化
         for (exerciseName in myApp.allExerciseList) {
             // 0で初期化
-            myApp.exerciseMap[exerciseName] = sharedPreference.getInt("Existed_" + exerciseName, 0)
-            myApp.exercisePlayMap[exerciseName] = sharedPreference.getInt("Played_"+ exerciseName, 0)
+            myApp.exerciseMap[exerciseName] = sharedPreference.getInt("Existed_$exerciseName", 0)
+            myApp.exercisePlayMap[exerciseName] = sharedPreference.getInt("Played_$exerciseName", 0)
         }
 
         // existListとgatchaListの初期化
@@ -101,9 +126,21 @@ class MainActivity : AppCompatActivity() {
                 myApp.gatchaList.add(exerciseName)
             }
         }
+
+        // dailyMission
+        sharedPreference = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE)
+        for (i in 0..2){
+            myApp.dailyMissionList[i] = sharedPreference.getString("dailyMission$i", "").toString()
+        }
+    }
+    fun clearSettings() {
+        val sp = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE)
+        sp.edit().putString(myApp.visitedDate, "").apply()
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        clearSettings()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
@@ -121,9 +158,13 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         initVariables()
-        dailyBonus()
-        Log.d("init", myApp.exerciseMap.toString())
-        Log.d("init2", packageName)
+        dailySetting()
+        Log.d("dailyM1", myApp.dailyMissionList[0].toString())
+        Log.d("dailyM2", myApp.dailyMissionList[1].toString())
+        Log.d("dailyM3", myApp.dailyMissionList[2].toString())
+//        Log.d("existSize", myApp.existList.size.toString())
+//        Log.d("init", myApp.exerciseMap.toString())
+//        Log.d("init2", packageName)
     }
 }
 

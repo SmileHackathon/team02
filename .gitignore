@@ -13,4 +13,8 @@
 .externalNativeBuild
 .cxx
 local.properties
-.idea/
+.idea/workspace.xml
+.gradle/6.5/fireHashes/fileHashes.bin
+.gradle/6.5/fireHashes/fileHashes.lock
+.gradle/6.5/fireHashes/fileHashes.lock
+.gradle/buildOutputCleanup/buildOutputCleanup.lock

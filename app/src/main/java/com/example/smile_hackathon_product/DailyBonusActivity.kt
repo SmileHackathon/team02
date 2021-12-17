@@ -18,7 +18,7 @@ class DailyBonusActivity : AppCompatActivity() {
         val myApp = MyApplication.getInstance()
 
         //text
-        tvBonus.text = myApp.gatchaPoint.toString() + "ガチャポイントを獲得しました！"
+        tvBonus.text = myApp.gatchaPoint.toString() + "ガチャポイント\nを獲得しました！"
 
         // ボタンが押されたときの処理
         button.setOnClickListener{

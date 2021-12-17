@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/navigation_level"
-        android:icon="@drawable/daily"
+        android:icon="@drawable/level"
         android:title="@string/title_level" />
 
 </menu>

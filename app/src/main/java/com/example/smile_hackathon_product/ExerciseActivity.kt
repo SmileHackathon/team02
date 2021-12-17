@@ -22,15 +22,39 @@ class ExerciseActivity : AppCompatActivity(){
         val myApp = MyApplication.getInstance()
 
         // Homeで押されたボタンの運動を受け取る
+        val getExerciseName = intent.getStringExtra("EXERCISE_NAME")
         exerciseName.text = myApp.exerciseNameMap[intent.getStringExtra("EXERCISE_NAME")]
         exerciseTime.text = myApp.exerciseTimeMap[intent.getStringExtra("EXERCISE_NAME")]
         val exerciseExp = myApp.exerciseExpMap[intent.getStringExtra("EXERCISE_NAME")]
         val getPoint = intent.getIntExtra("POINT", 0)
 
-        // 受けとった運動ごとに表示を変える
 
         // 完了ボタンが押されたときの処理
         finishedExerciseButton.setOnClickListener{
+            if (getExerciseName == "squat") {
+                myApp.exercisePlayMap["squat"] = 1
+            }
+            if (getExerciseName == "walking") {
+                myApp.exercisePlayMap["walking"] = 1
+            }
+            if (getExerciseName == "running") {
+                myApp.exercisePlayMap["running"] = 1
+            }
+            if (getExerciseName == "plank") {
+                myApp.exercisePlayMap["plank"] = 1
+            }
+            if (getExerciseName == "fukkin") {
+                myApp.exercisePlayMap["fukkin"] = 1
+            }
+            if (getExerciseName == "haikinn") {
+                myApp.exercisePlayMap["haikinn"] = 1
+            }
+            if (getExerciseName == "udetate") {
+                myApp.exercisePlayMap["udetate"] = 1
+            }
+            if (getExerciseName == "momoage") {
+                myApp.exercisePlayMap["momoage"] = 1
+            }
             var intent = Intent(this, ExerciseResultActivity::class.java)
             intent.putExtra("EXERCISE_EXP", exerciseExp)
             myApp.gatchaPoint += getPoint
@@ -45,3 +69,4 @@ class ExerciseActivity : AppCompatActivity(){
 
     }
 }
+

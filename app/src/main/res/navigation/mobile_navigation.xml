@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.example.smile_hackathon_product.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:destination="@id/navigation_home2" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_gatcha"
@@ -28,4 +32,14 @@
         android:name="com.example.smile_hackathon_product.ui.level.LevelFragment"
         android:label="@string/title_level"
         tools:layout="@layout/fragment_level" />
+
+    <fragment
+        android:id="@+id/navigation_home2"
+        android:name="com.example.smile_hackathon_product.ui.home.Home2Fragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home2">
+    <action
+        android:id="@+id/action_back_to_firstFragment"
+        app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>

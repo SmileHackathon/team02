@@ -13,10 +13,14 @@ class DailyBonusActivity : AppCompatActivity() {
         // Viewの取得
         var tvBonus : TextView = findViewById(R.id.tv_bonus)
 <<<<<<< HEAD
+<<<<<<< HEAD
         var button : Button = findViewById(R.id.button)
 =======
 //        var button : Button = findViewById(R.id.button)
 >>>>>>> 49948b6b4df7d2aaa2db4a74aa28f6e5329e3614
+=======
+        var button : Button = findViewById(R.id.button)
+>>>>>>> f4455e01d0af0151010a126a277022b4c1aff57b
 
         //instance呼び出し
         val myApp = MyApplication.getInstance()
@@ -26,6 +30,7 @@ class DailyBonusActivity : AppCompatActivity() {
 
         // ボタンが押されたときの処理
 <<<<<<< HEAD
+<<<<<<< HEAD
         button.setOnClickListener{
             finish()
         }
@@ -34,6 +39,11 @@ class DailyBonusActivity : AppCompatActivity() {
 //            finish()
 //        }
 >>>>>>> 49948b6b4df7d2aaa2db4a74aa28f6e5329e3614
+=======
+        button.setOnClickListener{
+            finish()
+        }
+>>>>>>> f4455e01d0af0151010a126a277022b4c1aff57b
 
 
     }

@@ -14,7 +14,7 @@
 .cxx
 local.properties
 .idea/workspace.xml
-.gradle/6.5/fireHashes/fileHashes.bin
-.gradle/6.5/fireHashes/fileHashes.lock
-.gradle/6.5/fireHashes/fileHashes.lock
-.gradle/buildOutputCleanup/buildOutputCleanup.lock
+gradle/6.5/fireHashes/fileHashes.bin
+gradle/6.5/fireHashes/fileHashes.lock
+gradle/6.5/fireHashes/fileHashes.lock
+gradle/buildOutputCleanup/buildOutputCleanup.lock

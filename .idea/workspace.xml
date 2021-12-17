@@ -29,9 +29,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c60557f7-c798-46c5-9ab9-a4e20d2694f0" name="デフォルト変更リスト" comment="DailyBonus画面の追加">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c60557f7-c798-46c5-9ab9-a4e20d2694f0" name="デフォルト変更リスト" comment="DailyBonus画面の追加" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

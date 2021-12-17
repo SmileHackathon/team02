@@ -100,7 +100,3 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
-
-class AssetsProcess() : AppCompatActivity() {
-
-}

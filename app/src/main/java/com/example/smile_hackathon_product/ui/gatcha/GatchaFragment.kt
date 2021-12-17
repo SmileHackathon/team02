@@ -35,7 +35,7 @@ class GatchaFragment : Fragment() {
         val myApp = MyApplication.getInstance()
 
         // textの表示
-        tvGatcha.text = "所有ポイント" + myApp.gatchaPoint.toString() + "ポイント"
+        tvGatcha.text = "所有ポイント：" + myApp.gatchaPoint.toString() + "GP"
 
         // ボタンが押されたときの処理
         if (myApp.gatchaPoint >= 100) { // 100ポイント以上持っているときだけガチャが引ける

@@ -41,7 +41,7 @@ class LevelFragment : Fragment() {
         progressBar.max = myApp.playerLevel*10
 
         // レベルアップに必要な経験値
-        tvNeedExp.text = (myApp.exp+myApp.playerLevel*10-myApp.neededExp).toString() + " / " + (myApp.playerLevel*10).toString() + "exp"
+        tvNeedExp.text = (myApp.exp+myApp.playerLevel*10-myApp.neededExp).toString() + " / " + (myApp.playerLevel*10).toString() + "  exp"
         tvLevel.text = "Lv."+myApp.playerLevel
 
         // レベルによって表示する画像が変わる

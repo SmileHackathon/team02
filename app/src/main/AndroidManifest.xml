@@ -35,4 +35,5 @@
             android:name=".GatchaResultActivity"
             android:label="@string/app_name" />
     </application>
+
 </manifest>

@@ -1,13 +1,18 @@
 package com.example.smile_hackathon_product
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 
 class ExerciseActivity : AppCompatActivity(){
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
@@ -27,7 +32,6 @@ class ExerciseActivity : AppCompatActivity(){
         exerciseTime.text = myApp.exerciseTimeMap[intent.getStringExtra("EXERCISE_NAME")]
         val exerciseExp = myApp.exerciseExpMap[intent.getStringExtra("EXERCISE_NAME")]
         val getPoint = intent.getIntExtra("POINT", 0)
-
 
         // 完了ボタンが押されたときの処理
         finishedExerciseButton.setOnClickListener{

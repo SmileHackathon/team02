@@ -47,9 +47,9 @@ class GatchaFragment : Fragment() {
                 //ガチャポイントの消費
                 myApp.gatchaPoint -= 100
                 // ガチャに入ってる運動の数を減らす
-                myApp.gatchaList -= gatchaResult
+                myApp.gatchaList.minusAssign(gatchaResult)
                 // 持ってる運動の数を増やす
-                myApp.existList += gatchaResult
+                myApp.existList.plusAssign(gatchaResult)
                 myApp.exerciseMap[gatchaResult] = 1
 
                 // リザルト画面にガチャ結果を送る

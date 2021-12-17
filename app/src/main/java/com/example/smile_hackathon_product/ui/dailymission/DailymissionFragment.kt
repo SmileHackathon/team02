@@ -24,7 +24,8 @@ import org.w3c.dom.Text
 class DailymissionFragment : Fragment() {
     private lateinit var dailymissionViewModel: DailymissionViewModel
 
-    var dailyMissionList = mutableListOf<String>()
+    var myApp = MyApplication.getInstance()
+    var dailyMissionList = myApp.dailyMissionList
 
     override fun onCreateView(
         inflater: LayoutInflater,

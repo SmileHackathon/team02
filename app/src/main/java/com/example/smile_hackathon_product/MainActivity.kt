@@ -47,6 +47,15 @@ class MainActivity : AppCompatActivity() {
         if( nowDate.toString() != recordedDate ) {
             // デイリーボーナスをゲットする
             getDailyBonus(10)
+            // デイリーミッション更新
+            if (myApp.existList.size <= 3){
+                myApp.dailyMissionList.plusAssign(myApp.existList)
+            } else {
+                myApp.dailyMissionList.plusAssign(myApp.existList)
+                for (i in 0..(myApp.existList.size-4)){
+                    myApp.dailyMissionList.minusAssign(myApp.dailyMissionList[(0 until myApp.dailyMissionList.size).random()])
+                }
+            }
             // 画面遷移
             var intent = Intent(this, DailyBonusActivity::class.java)
             startActivity(intent)
@@ -107,15 +116,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_gatcha, R.id.navigation_daily_mission))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        // 画面開くとデイリーボーナスかどうか判断する
-        dailyBonus()
-
     }
 
     override fun onStart() {
         super.onStart()
         initVariables()
+        dailyBonus()
         Log.d("init", myApp.exerciseMap.toString())
         Log.d("init2", packageName)
     }

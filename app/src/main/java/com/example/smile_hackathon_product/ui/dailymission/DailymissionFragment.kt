@@ -49,11 +49,11 @@ class DailymissionFragment : Fragment() {
 
         // 持っている運動のリストから、ランダムでデイリーミッションを選ぶ
         if (myApp.existList.size <= 3){
-            dailyMissionList += myApp.existList
+            dailyMissionList.plusAssign(myApp.existList)
         } else {
-            dailyMissionList += myApp.existList
+            dailyMissionList.plusAssign(myApp.existList)
             for (i in 0..(existListSize-4)){
-                dailyMissionList -= dailyMissionList[(0 until dailyMissionList.size).random()]
+                dailyMissionList.minusAssign(dailyMissionList[(0 until dailyMissionList.size).random()])
             }
         }
 

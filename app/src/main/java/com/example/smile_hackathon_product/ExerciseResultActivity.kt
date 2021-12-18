@@ -1,5 +1,6 @@
 package com.example.smile_hackathon_product
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -29,6 +30,12 @@ class ExerciseResultActivity : AppCompatActivity(){
 
         // 経験値追加
         myApp.exp += exp
+        // expを保存する
+        val editor = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE).edit()
+        editor.putInt("exp", myApp.exp)
+        editor.apply()
+
+        // レベルアップに必要な経験値を満たしてたらレベルアップする
         if (myApp.exp >= myApp.neededExp){
             myApp.playerLevel += 1
             myApp.neededExp = myApp.playerLevel * (10 + myApp.playerLevel*10) / 2
@@ -37,6 +44,10 @@ class ExerciseResultActivity : AppCompatActivity(){
             }else{
                 myApp.gatchaPoint += 10
             }
+            // 保存
+            editor.putInt(myApp.gatchaPointStr, myApp.gatchaPoint)
+            editor.putInt(myApp.playerLevelStr, myApp.playerLevel)
+            editor.apply()
         }
 
         // レベルをprogressBarで表示

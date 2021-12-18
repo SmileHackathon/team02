@@ -9,9 +9,9 @@
 
     <Button
         android:id="@+id/gatcha_button"
-        android:layout_width="236dp"
-        android:layout_height="100dp"
-        android:text="1回引く"
+        android:layout_width="275dp"
+        android:layout_height="153dp"
+        android:text="100gpで\n1回引く"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,4 +19,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
+
+    <TextView
+        android:id="@+id/tv_gatcha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="所持ポイント：○○ポイント"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.328" />
 </androidx.constraintlayout.widget.ConstraintLayout>

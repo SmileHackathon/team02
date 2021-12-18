@@ -1,8 +1,11 @@
 package com.example.smile_hackathon_product
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -14,9 +17,47 @@ class ExerciseResultActivity : AppCompatActivity(){
         // Viewの取得
         val exerciseExp : TextView = findViewById(R.id.exercise_exp)
         val exerciseResultFinishButton : Button = findViewById(R.id.exercise_result_finish_button)
+        val progressBar : ProgressBar = findViewById(R.id.progressbar)
+        val tvLevel : TextView = findViewById(R.id.tv_level)
+        val tvNeedExp : TextView = findViewById(R.id.tv_need_exp)
+
+        //instance呼び出し
+        val myApp = MyApplication.getInstance()
 
         // 獲得した経験値の表示
-        exerciseExp.text = intent.getIntExtra("EXERCISE_EXP",0).toString() + "経験値を獲得しました！"
+        var exp = intent.getIntExtra("EXERCISE_EXP",0)
+        exerciseExp.text = exp.toString() + "経験値を獲得しました！"
+
+        // 経験値追加
+        myApp.exp += exp
+        // expを保存する
+        val editor = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE).edit()
+        editor.putInt("exp", myApp.exp)
+        editor.apply()
+
+        // レベルアップに必要な経験値を満たしてたらレベルアップする
+        if (myApp.exp >= myApp.neededExp){
+            myApp.playerLevel += 1
+            myApp.neededExp = myApp.playerLevel * (10 + myApp.playerLevel*10) / 2
+            if (myApp.playerLevel%10 == 0) {
+                myApp.gatchaPoint += 100
+            }else{
+                myApp.gatchaPoint += 10
+            }
+            // 保存
+            editor.putInt(myApp.gatchaPointStr, myApp.gatchaPoint)
+            editor.putInt(myApp.playerLevelStr, myApp.playerLevel)
+            editor.apply()
+        }
+
+        // レベルをprogressBarで表示
+        progressBar.progress = myApp.exp + myApp.playerLevel * 10 - myApp.neededExp
+        progressBar.max = myApp.playerLevel * 10
+        // レベルアップに必要な経験値
+        tvNeedExp.text = (myApp.exp+myApp.playerLevel*10-myApp.neededExp).toString() + " / " + (myApp.playerLevel*10).toString() + "  exp"
+        tvLevel.text = "Lv."+myApp.playerLevel
+
+
 
         // ホームに戻るボタン
         exerciseResultFinishButton.setOnClickListener{

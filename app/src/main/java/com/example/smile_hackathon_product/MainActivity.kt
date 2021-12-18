@@ -120,5 +120,3 @@ class MainActivity : AppCompatActivity() {
         Log.d("init2", packageName)
     }
 }
-
-

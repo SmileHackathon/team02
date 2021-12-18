@@ -3,6 +3,9 @@ package com.example.smile_hackathon_product
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +34,7 @@ class ExerciseActivity : AppCompatActivity(){
 
 
         val sharedPreference = getSharedPreferences(myApp.preferencePath, Context.MODE_PRIVATE)
+
         // 完了ボタンが押されたときの処理
         finishedExerciseButton.setOnClickListener{
             if (getExerciseName == "squat") {

@@ -11,7 +11,7 @@
         android:id="@+id/gatcha_button"
         android:layout_width="275dp"
         android:layout_height="153dp"
-        android:text="100ポイント消費して1回引く"
+        android:text="100gpで\n1回引く"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
